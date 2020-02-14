@@ -1,26 +1,10 @@
-package com.cbnits.springboot_demo.bean.entity;
+package com.cbnits.springboot_demo.bean.request;
 
-public class Employee {
+public class EmployeeRequest {
 
-    private String id;
     private String name;
     private Long salary;
     private String designation;
-
-    public Employee(String id, String name, Long salary, String designation) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-        this.designation = designation;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
