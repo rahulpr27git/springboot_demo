@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class EmployeeController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("employees")
-    public Employee createEmployee(@RequestBody EmployeeRequest request) throws Exception {
+    public Employee createEmployee(@RequestBody @Valid EmployeeRequest request) throws Exception {
         return service.createEmployee(request);
     }
 
@@ -37,7 +38,7 @@ public class EmployeeController {
 
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("employees/{id}")
-    public Response delete(@PathVariable("id") String id) throws Exception {
+    public Response delete(@PathVariable(value = "id") String id) throws Exception {
         return service.delete(id);
     }
 
@@ -45,7 +46,7 @@ public class EmployeeController {
     @PutMapping("employees/{id}")
     public Employee update(
             @PathVariable("id") String id,
-            @RequestBody EmployeeRequest request
+            @RequestBody @Valid EmployeeRequest request
     ) throws Exception {
         return service.update(id, request);
     }

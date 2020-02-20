@@ -19,24 +19,6 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Employee createEmployee(EmployeeRequest request) throws Exception {
-
-        List<String> invalidRequestParam = new ArrayList<>();
-        if (request.getDesignation() == null)
-            invalidRequestParam.add("designation");
-
-        if (request.getName() == null)
-            invalidRequestParam.add("name");
-
-        if (request.getSalary() == null || request.getSalary() <= 0)
-            invalidRequestParam.add("salary");
-
-        // invalidRequestParam.toString() -> ["designation", "salary"]
-        if (invalidRequestParam.size() > 0)
-            throw new Exception(String.format(
-                    "Please provide the required values: %s",
-                    invalidRequestParam.toString().replace("[", "").replace("]", "")
-            ));
-
         return repository.insert(request);
     }
 
