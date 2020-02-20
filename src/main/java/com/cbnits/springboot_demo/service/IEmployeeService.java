@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IEmployeeService {
 
-    Employee createEmployee(EmployeeRequest request);
+    Employee createEmployee(EmployeeRequest request) throws Exception;
 
     List<Employee> getEmployees();
 

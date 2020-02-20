@@ -19,7 +19,7 @@ public class EmployeeController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("employees")
-    public Employee createEmployee(@RequestBody EmployeeRequest request) {
+    public Employee createEmployee(@RequestBody EmployeeRequest request) throws Exception {
         return service.createEmployee(request);
     }
 
@@ -28,12 +28,6 @@ public class EmployeeController {
     public List<Employee> getAll() {
         return service.getEmployees();
     }
-
-    /*@ResponseStatus(HttpStatus.OK)
-    @GetMapping("employees")
-    public Employee get(@RequestParam("id") String id) throws Exception {
-        return service.get(id);
-    }*/
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("employees/{id}")
