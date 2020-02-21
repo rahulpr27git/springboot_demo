@@ -1,13 +1,14 @@
 package com.cbnits.springboot_demo.service;
 
 import com.cbnits.springboot_demo.bean.entity.Employee;
-import com.cbnits.springboot_demo.bean.payload.Response;
+import com.cbnits.springboot_demo.bean.pojo.Response;
 import com.cbnits.springboot_demo.bean.request.EmployeeRequest;
 import com.cbnits.springboot_demo.repository.IEmployeeRepository;
+import com.cbnits.springboot_demo.util.exceptions.InvalidRequestException;
+import com.cbnits.springboot_demo.util.exceptions.SpringBootDemoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class EmployeeService implements IEmployeeService {
     private IEmployeeRepository repository;
 
     @Override
-    public Employee createEmployee(EmployeeRequest request) throws Exception {
+    public Employee createEmployee(EmployeeRequest request) {
         return repository.insert(request);
     }
 
@@ -28,31 +29,31 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public Employee get(String id) throws Exception {
+    public Employee get(String id) {
         Optional<Employee> employee = repository.get(id);
 
         if (employee.isPresent())
             return employee.get();
 
-        throw new Exception(String.format("Employee with id: %s not preset", id));
+        throw new InvalidRequestException(String.format("Employee with id: %s not present", id));
     }
 
     @Override
-    public Response delete(String id) throws Exception {
+    public Response delete(String id) {
         boolean delete = repository.delete(id);
         if (delete)
             return new Response(false, String.format("Employee with id: %s successfully deleted.", id));
 
-        throw new Exception(String.format("Employee with id: %s not preset", id));
+        throw new SpringBootDemoException(String.format("Employee with id: %s not present", id));
     }
 
     @Override
-    public Employee update(String id, EmployeeRequest request) throws Exception {
+    public Employee update(String id, EmployeeRequest request) {
         Employee emp = repository.update(id, request);
 
         if (emp != null)
             return emp;
 
-        throw new Exception(String.format("Employee with id: %s not preset", id));
+        throw new InvalidRequestException(String.format("Employee with id: %s not present", id));
     }
 }

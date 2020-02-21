@@ -1,4 +1,4 @@
-package com.cbnits.springboot_demo.bean.payload;
+package com.cbnits.springboot_demo.bean.pojo;
 
 public class Response {
 
