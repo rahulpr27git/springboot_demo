@@ -1,24 +1,40 @@
 package com.cbnits.springboot_demo.bean.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "salary")
     private Long salary;
+
+    @Column(name = "designation")
     private String designation;
 
-    public Employee(String id, String name, Long salary, String designation) {
+    public Employee() {
+    }
+
+    public Employee(Long id, String name, Long salary, String designation) {
         this.id = id;
         this.name = name;
         this.salary = salary;
         this.designation = designation;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
