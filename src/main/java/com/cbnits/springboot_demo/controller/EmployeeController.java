@@ -6,6 +6,7 @@ import com.cbnits.springboot_demo.bean.request.EmployeeRequest;
 import com.cbnits.springboot_demo.service.IEmployeeService;
 import com.cbnits.springboot_demo.util.exceptions.SpringBootDemoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
+    @Qualifier("db_employee")
     private IEmployeeService service;
 
     @ResponseStatus(HttpStatus.CREATED)
