@@ -18,7 +18,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     @Override
     public Employee insert(EmployeeRequest request) {
         Employee employee = new Employee(
-                UUID.randomUUID().toString(),
+                UUID.randomUUID().timestamp(),
                 request.getName(),
                 request.getSalary(),
                 request.getDesignation()
