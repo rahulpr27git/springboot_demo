@@ -12,9 +12,9 @@ public interface IEmployeeService {
 
     List<Employee> getEmployees();
 
-    Employee get(String id);
+    Employee get(Long id);
 
-    Response delete(String id) ;
+    Response delete(Long id) ;
 
-    Employee update(String id, EmployeeRequest request);
+    Employee update(Long id, EmployeeRequest request);
 }
