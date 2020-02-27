@@ -54,4 +54,10 @@ public class EmployeeController {
     ) {
         return service.update(id, request);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "employees", params = "name")
+    public List<Employee> getByName(@RequestParam("name") String name) {
+        return service.getByName(name);
+    }
 }

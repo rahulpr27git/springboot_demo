@@ -17,4 +17,6 @@ public interface IEmployeeService {
     Response delete(Long id) ;
 
     Employee update(Long id, EmployeeRequest request);
+
+    List<Employee> getByName(String name);
 }

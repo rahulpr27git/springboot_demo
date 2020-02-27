@@ -69,4 +69,9 @@ public class EmployeeService2 implements IEmployeeService {
 
         return repository.save(employee);
     }
+
+    @Override
+    public List<Employee> getByName(String name) {
+        return repository.findByName(name);
+    }
 }
